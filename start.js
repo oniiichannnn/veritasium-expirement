@@ -1,5 +1,5 @@
 const simulations =  5000;
-const method = "METHOD 1" // there are 2 methods, "METHOD 1" is the random method and "METHOD 2" is the veritasium suggested method with a rate of 33% according to the video
+const method = "METHOD 1" // there are 2 methods, "METHOD 1" is the random method and "METHOD 2" is the veritasium suggested method with a rate of 0.31% according to the video
 
 let success = 0;
 let total_found_prisoners = 0;
