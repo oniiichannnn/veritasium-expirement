@@ -1,4 +1,5 @@
 const simulations =  5000;
+const method = "METHOD 1" // there are 2 methods, "METHOD 1" is the random method and "METHOD 2" is the veritasium suggested method with a rate of 33% according to the video
 
 let success = 0;
 let total_found_prisoners = 0;
@@ -12,17 +13,26 @@ function start_simulation (i) {
 
  let found_number_prisoners = 0;
 
+ // generate 100 numbes and push em into a list
  loop(function (i) { numbers.push(i) }, 100);
 
+ // generate the boxes
  let generated_contents = [];
  loop(function (i) {
+	// "i" is the current index of the loop
 	const label = i;
+	 
+	// the content of the box is randomly picked from the numbers list
 	const filtered_contents = numbers.filter(n => !generated_contents.includes(n));
+	 
+	// to prevent duplicated contents
 	const content = filtered_contents[Math.floor(Math.random() * filtered_contents.length)];
 	
+	 generated_contents.push(content)
 	boxes.push({ label, content });
  }, 100)
 
+ // the prisoners open boxes
  loop(function (i) {
 	const prisoner = i;
 	const opened_boxes = [];
@@ -34,10 +44,12 @@ function start_simulation (i) {
 		let chosen_box;
 
 		switch (method) {
+			// method 1 = the random method where prisoners randomly choose boxes and open them to see if they get their number
 			case "METHOD_1": {
 				chosen_box = filtered_boxes[Math.floor(Math.random() * filtered_boxes.length)]
 			} break;
 
+			// method 2 = the method where the prisoner will choose a box, open it and pick another box based on the content of the previous box, the method which veritasium said to have a success rate of 0.31%
 			case "METHOD_2": {
 				chosen_box = function () {
 					if (previous_box_content !== undefined) {
