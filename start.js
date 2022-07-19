@@ -45,12 +45,12 @@ function start_simulation (i) {
 
 		switch (method) {
 			// method 1 = the random method where prisoners randomly choose boxes and open them to see if they get their number
-			case "METHOD_1": {
+			case "METHOD 1": {
 				chosen_box = filtered_boxes[Math.floor(Math.random() * filtered_boxes.length)]
 			} break;
 
 			// method 2 = the method where the prisoner will choose a box, open it and pick another box based on the content of the previous box, the method which veritasium said to have a success rate of 0.31%
-			case "METHOD_2": {
+			case "METHOD 2": {
 				chosen_box = function () {
 					if (previous_box_content !== undefined) {
 						if (opened_boxes.find(box => box.label === previous_box_content)) {
